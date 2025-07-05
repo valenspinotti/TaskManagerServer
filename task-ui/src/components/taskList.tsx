@@ -28,9 +28,9 @@ export const TaskList = ({
           key={task.id}
           className="p-4 border rounded-md shadow-sm bg-gray-50 hover:bg-gray-100 transition-colors"
         >
-          <div className="flex justify-between items-center">
-            <h3 className="font-semibold">{task.title}</h3>
-            <p className="text-sm text-gray-600">{task.description}</p>
+          <h3 className="font-semibold">{task.title}</h3>
+          <p className="text-sm text-gray-600">{task.description}</p>
+          <div className="flex-row items-end justify-between mt-2">
             <span
               className={`inline-block mt-2 px-2 py-1 text-xs font-semibold rounded-full ${
                 task.status === "completed"
@@ -42,13 +42,14 @@ export const TaskList = ({
             >
               Status: {task.status}
             </span>
+
+            <button
+              onClick={() => onStatusUpdate(task)}
+              className="ml-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-200"
+            >
+              Change Status
+            </button>
           </div>
-          <button
-            onClick={() => onStatusUpdate(task)}
-            className="ml-2 bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-200"
-          >
-            Change Status
-          </button>
           <p className="text-sm text-gray-500 mt-2">
             Created at: {new Date(task.createdAt).toLocaleString()}
           </p>

@@ -81,7 +81,7 @@ export default function Dashboard() {
               tasks={tasks}
               onDelete={handleDeleteTask}
               onStatusUpdate={handleStatusUpdate}
-              onEdit={(taskId) => navigate(`/edit/${taskId}`)}
+              onEdit={(taskId) => navigate(`/edit-task/${taskId}`)}
             />
           )}
         </ul>

@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Dashboard from "./pages/dashboard";
-import TaskForm from "./components/taskForm";
+import EditTask from "./components/editTask";
 
 export default function App() {
   const token = localStorage.getItem("token");
@@ -17,10 +17,7 @@ export default function App() {
           path="/dashboard"
           element={token ? <Dashboard /> : <Navigate to="/login" />}
         />
-        <Route
-          path="/create-task"
-          element={<TaskForm OntaskCreated={() => {}} />}
-        />
+        <Route path="/edit-task/:id" element={<EditTask />} />
       </Routes>
     </BrowserRouter>
   );

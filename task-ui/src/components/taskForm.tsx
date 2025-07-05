@@ -59,6 +59,7 @@ const TaskForm = ({ OntaskCreated }: Props) => {
       >
         <option value="pending">Pending</option>
         <option value="in progress">In Progress</option>
+
         <option value="completed">Completed</option>
       </select>
       <button type="submit" className="bg-blue-500 text-white p-2 rounded">
