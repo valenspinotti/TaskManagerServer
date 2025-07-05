@@ -21,7 +21,7 @@ export const createTask = (req: AuthRequest, res: Response) => {
     userId: req.userId!,
     title,
     description: description || "",
-    status: "pending",
+    status: req.body.status || "pending",
     createdAt: new Date().toISOString(),
   };
 
@@ -43,6 +43,8 @@ export const updateTask = (req: AuthRequest, res: Response) => {
   task.title = title ?? task.title;
   task.description = description ?? task.description;
   task.status = status ?? task.status;
+
+  res.json(task);
 };
 
 export const deleteTask = (req: AuthRequest, res: Response) => {
