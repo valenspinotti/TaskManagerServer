@@ -11,7 +11,7 @@ export const getTasks = async (): Promise<Task[]> => {
 export const createTask = async (taskData: {
   title: string;
   description: string;
-  status: "pending" | "in-progress" | "completed";
+  status: "pending" | "in progress" | "completed";
   createdAt: string;
 }): Promise<Task> => {
   const token = localStorage.getItem("token");
