@@ -43,3 +43,22 @@ export const deleteTask = async (id: string) => {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
+
+export const getTaskById = async (id: string): Promise<Task> => {
+  const token = localStorage.getItem("token");
+  const res = await axios.get(`${API_URL}/${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data;
+};
+
+export const updateTask = async (
+  id: string,
+  updatedData: Partial<Task>
+): Promise<Task> => {
+  const token = localStorage.getItem("token");
+  const res = await axios.put(`${API_URL}/${id}`, updatedData, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return res.data;
+};

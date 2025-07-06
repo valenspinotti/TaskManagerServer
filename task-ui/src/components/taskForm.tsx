@@ -45,23 +45,6 @@ const TaskForm = ({ initialTask, onSubmit, mode = "create" }: Props) => {
     }
   };
 
-  //   try {
-  //     const createdAt = new Date().toISOString();
-  //     const newTask = await createTask({
-  //       title,
-  //       description,
-  //       status,
-  //       createdAt,
-  //     });
-  //     OntaskCreated(newTask);
-  //     setTitle("");
-  //     setDescription("");
-  //     setStatus("pending");
-  //   } catch (error) {
-  //     console.error("Error creating task:", error);
-  //   }
-  // };
-
   // const initialTask: Task = {
   //   id: "",
   //   title: "",

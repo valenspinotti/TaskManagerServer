@@ -62,3 +62,15 @@ export const deleteTask = (req: AuthRequest, res: Response) => {
   tasks.splice(index, 1);
   res.status(204).send({ message: "Tarea borrada con éxito" });
 };
+
+export const getTaskById = (req: AuthRequest, res: Response) => {
+  const { id } = req.params;
+  const task = tasks.find((t) => t.id === id && t.userId === req.userId);
+
+  if (!task) {
+    res.status(404).json({ message: "Tarea no encontrada" });
+    return;
+  }
+
+  res.json(task);
+};
