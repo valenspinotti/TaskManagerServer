@@ -27,6 +27,7 @@ export const updateTaskStatus = async (
   id: string,
   status: string
 ): Promise<Task> => {
+  console.log("Updating task status:", id, status);
   const token = localStorage.getItem("token");
   const res = await axios.put(
     `${API_URL}/${id}`,

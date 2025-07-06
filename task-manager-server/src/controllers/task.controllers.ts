@@ -33,7 +33,10 @@ export const updateTask = (req: AuthRequest, res: Response) => {
   const { id } = req.params;
   const { title, description, status } = req.body;
 
-  const task = tasks.find((t) => t.id === id && t.userId === req.userId);
+  const task = tasks.find((t) => t.id === id);
+  console.log("User ID:", req.userId);
+  console.log("Task ID:", req.params.id);
+  console.log("All Tasks:", tasks);
 
   if (!task) {
     res.status(404).json({ message: "Tarea no encontrada" });

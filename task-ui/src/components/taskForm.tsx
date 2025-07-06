@@ -1,35 +1,74 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Task } from "../types/task";
 import { createTask } from "../services/taskService";
 
 interface Props {
-  OntaskCreated: (task: Task) => void;
+  initialTask?: Task;
+  mode?: "create" | "edit";
+  onSubmit?: (data: Partial<Task>) => void;
 }
 
-const TaskForm = ({ OntaskCreated }: Props) => {
+const TaskForm = ({ initialTask, onSubmit, mode = "create" }: Props) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState<"pending" | "in progress" | "completed">(
     "pending"
   );
+  useEffect(() => {
+    if (initialTask) {
+      setTitle(initialTask.title);
+      setDescription(initialTask.description);
+      setStatus(initialTask.status);
+    }
+  }, [initialTask]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const createdAt = new Date().toISOString();
+    let newTask;
     try {
-      const createdAt = new Date().toISOString();
-      const newTask = await createTask({
+      newTask = await createTask({
         title,
         description,
         status,
         createdAt,
       });
-      OntaskCreated(newTask);
-      setTitle("");
-      setDescription("");
-      setStatus("pending");
+      onSubmit?.(newTask);
+      if (mode === "create") {
+        setTitle("");
+        setDescription("");
+        setStatus("pending");
+      }
     } catch (error) {
       console.error("Error creating task:", error);
     }
   };
+
+  //   try {
+  //     const createdAt = new Date().toISOString();
+  //     const newTask = await createTask({
+  //       title,
+  //       description,
+  //       status,
+  //       createdAt,
+  //     });
+  //     OntaskCreated(newTask);
+  //     setTitle("");
+  //     setDescription("");
+  //     setStatus("pending");
+  //   } catch (error) {
+  //     console.error("Error creating task:", error);
+  //   }
+  // };
+
+  // const initialTask: Task = {
+  //   id: "",
+  //   title: "",
+  //   description: "",
+  //   status: "pending",
+  //   createdAt: new Date().toISOString(),
+  // };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-4 rounded shadow-md">
@@ -59,11 +98,17 @@ const TaskForm = ({ OntaskCreated }: Props) => {
       >
         <option value="pending">Pending</option>
         <option value="in progress">In Progress</option>
-
         <option value="completed">Completed</option>
       </select>
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-        Create Task
+      <button
+        type="submit"
+        className={`bg-blue-500 text-white p-2 rounded${
+          mode === "edit"
+            ? "bg-yellow-500 hover:bg-yellow-600 "
+            : "bg-blue-500 hover:bg-blue-600"
+        }`}
+      >
+        {mode === "create" ? "Create Task" : "Update Task"}
       </button>
     </form>
   );

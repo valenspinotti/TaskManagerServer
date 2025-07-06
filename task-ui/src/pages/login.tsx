@@ -31,7 +31,7 @@ export default function Login() {
           Log In
         </h2>
         <p className="text-center text-gray-600 mb-4">
-          Bienvenido de nuevo, por favor ingresa tus credenciales.
+          Welcome! Please enter your credentials to log in.
         </p>
         <form onSubmit={handleSubmit} className="login-form">
           <div>

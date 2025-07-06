@@ -10,7 +10,14 @@ import { TaskList } from "../components/taskList";
 export default function Dashboard() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const navigate = useNavigate();
-  const handleTaskCreated = (newTask: Task) => {
+  const handleTaskCreated = (data: Partial<Task>) => {
+    const newTask: Task = {
+      id: data.id || crypto.randomUUID(), // Generate a unique ID for the new task
+      title: data.title || "",
+      description: data.description || "",
+      status: data.status || "pending",
+      createdAt: data.createdAt || new Date().toISOString(),
+    };
     setTasks((prevTasks) => [...prevTasks, newTask]);
     // alert("Task created successfully!");
     navigate("/dashboard");
@@ -47,7 +54,7 @@ export default function Dashboard() {
           navigate("/login");
           return;
         }
-        const response = await axios.get("http://localhost:3000/api/tasks", {
+        const response = await axios.get("http://localhost:3001/api/tasks", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTasks(response.data);
@@ -67,10 +74,9 @@ export default function Dashboard() {
           </h1>
         </div>
 
-        <TaskForm
-          OntaskCreated={(newTask) => {
-            handleTaskCreated(newTask);
-          }}
+        <TaskForm // No initial task for creating a new one
+          mode="create"
+          onSubmit={handleTaskCreated}
         />
         <h2 className="text-xl font-semibold mt-8 mb-4">Your Tasks</h2>
         <ul className="space-y-3">
