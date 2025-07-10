@@ -10,23 +10,41 @@ import { TaskList } from "../components/taskList";
 export default function Dashboard() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const navigate = useNavigate();
+
   const handleTaskCreated = (data: Partial<Task>) => {
     const newTask: Task = {
-      id: data.id || crypto.randomUUID(), // Generate a unique ID for the new task
-      title: data.title || "",
-      description: data.description || "",
-      status: data.status || "pending",
-      createdAt: data.createdAt || new Date().toISOString(),
+      id: data.id ?? crypto.randomUUID(),
+      title: data.title ?? "",
+      description: data.description ?? "",
+      status: data.status ?? "pending",
+      createdAt: data.createdAt ?? new Date().toISOString(),
     };
     setTasks((prevTasks) => [...prevTasks, newTask]);
     // alert("Task created successfully!");
     navigate("/dashboard");
   };
+
+  // const handleTaskCreated = (data: Task) => {
+  //   setTasks((prevTasks) => [...prevTasks, data]);
+  //   // const newTask: Task = {
+  //     // id: data.id || crypto.randomUUID(), // Generate a unique ID for the new task
+  //     // title: data.title || "",
+  //     // description: data.description || "",
+  //     // status: data.status || "pending",
+  //     // createdAt: data.createdAt || new Date().toISOString(),
+  //   };
+  //   setTasks((prevTasks) => [...prevTasks, newTask]);
+  //   // alert("Task created successfully!");
+  //   navigate("/dashboard");
+  // };
   const handleDeleteTask = async (taskId: string) => {
     await deleteTask(taskId);
 
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
+
+  //   setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  // };
   const cycleTask = (
     current: string
   ): "pending" | "in progress" | "completed" => {
@@ -51,8 +69,7 @@ export default function Dashboard() {
       try {
         const token = localStorage.getItem("token");
         if (!token) {
-          navigate("/login");
-          return;
+          return navigate("/login");
         }
         const response = await axios.get("http://localhost:3001/api/tasks", {
           headers: { Authorization: `Bearer ${token}` },

@@ -25,33 +25,28 @@ const TaskForm = ({ initialTask, onSubmit, mode = "create" }: Props) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const createdAt = new Date().toISOString();
-    let newTask;
-    try {
-      newTask = await createTask({
-        title,
-        description,
-        status,
-        createdAt,
-      });
-      onSubmit?.(newTask);
-      if (mode === "create") {
+    if (mode === "create") {
+      try {
+        const createdAt = new Date().toISOString();
+        const newTask = await createTask({
+          title,
+          description,
+          status,
+          createdAt,
+        });
+
+        onSubmit?.(newTask);
         setTitle("");
         setDescription("");
         setStatus("pending");
+      } catch (error) {
+        console.error("Error creating task:", error);
       }
-    } catch (error) {
-      console.error("Error creating task:", error);
+    }
+    if (mode === "edit") {
+      onSubmit?.({ title, description, status });
     }
   };
-
-  // const initialTask: Task = {
-  //   id: "",
-  //   title: "",
-  //   description: "",
-  //   status: "pending",
-  //   createdAt: new Date().toISOString(),
-  // };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-4 rounded shadow-md">
