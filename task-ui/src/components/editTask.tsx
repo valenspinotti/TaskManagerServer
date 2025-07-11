@@ -3,7 +3,6 @@ import TaskForm from "./taskForm";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Task } from "../types/task";
-import axios from "axios";
 import { getTaskById, updateTask } from "../services/taskService";
 
 const EditTask = () => {

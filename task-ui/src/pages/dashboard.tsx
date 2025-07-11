@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -24,27 +23,12 @@ export default function Dashboard() {
     navigate("/dashboard");
   };
 
-  // const handleTaskCreated = (data: Task) => {
-  //   setTasks((prevTasks) => [...prevTasks, data]);
-  //   // const newTask: Task = {
-  //     // id: data.id || crypto.randomUUID(), // Generate a unique ID for the new task
-  //     // title: data.title || "",
-  //     // description: data.description || "",
-  //     // status: data.status || "pending",
-  //     // createdAt: data.createdAt || new Date().toISOString(),
-  //   };
-  //   setTasks((prevTasks) => [...prevTasks, newTask]);
-  //   // alert("Task created successfully!");
-  //   navigate("/dashboard");
-  // };
   const handleDeleteTask = async (taskId: string) => {
     await deleteTask(taskId);
 
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
-  //   setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
-  // };
   const cycleTask = (
     current: string
   ): "pending" | "in progress" | "completed" => {
