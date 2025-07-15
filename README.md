@@ -93,7 +93,9 @@ task-manager-project/
 git clone https://github.com/tu_usuario/task-manager-app.git
 cd task-manager-server
 npm install
+```
 ---
+```bash
 cd ../task-ui
 npm install
 ```
