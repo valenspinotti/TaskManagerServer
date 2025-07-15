@@ -88,7 +88,7 @@ task-manager-project/
 
 ## 🧪 Cómo probar el proyecto localmente
 
-##1. Clonar el repositorio
+## 1. Clonar el repositorio
 ```bash
 git clone https://github.com/tu_usuario/task-manager-app.git
 cd task-manager-server
@@ -107,12 +107,13 @@ cd ../task-ui
 npm install
 ```
 ---
-##3. Ejecutar Backend y Frontend
+## 3. Ejecutar Backend y Frontend
  *Terminal 1 - Backend*
 ```bash
 cd task-manager-server
 npm run dev
 ```
+-
 
  *Terminal 2 - Frontend*
 ```bash
