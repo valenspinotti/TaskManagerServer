@@ -43,7 +43,7 @@ Organizá tu productividad como un profesional con **Task Manager App**, una apl
 
 ---
 
-## 📦 Estructura del proyecto
+### 📦 Estructura del proyecto
 
 📁 task-manager-server/
 ├── src/
@@ -61,7 +61,7 @@ Organizá tu productividad como un profesional con **Task Manager App**, una apl
 
 ---
 
-## 🔐 Seguridad y autenticación
+### 🔐 Seguridad y autenticación
 
 - Todas las rutas protegidas utilizan un **middleware de autenticación con JWT**.
 - Los tokens se almacenan y validan correctamente en el cliente.
@@ -69,7 +69,7 @@ Organizá tu productividad como un profesional con **Task Manager App**, una apl
 
 ---
 
-## 🧠 Metodologías aplicadas
+### 🧠 Metodologías aplicadas
 
 - **Desarrollo basado en componentes reutilizables (React)**
 - **Separación de responsabilidades (MVC):** Controllers, Models, Routes
