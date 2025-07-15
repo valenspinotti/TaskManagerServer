@@ -24,24 +24,24 @@ Una aplicación web moderna para organizar tareas personales, construida con tec
 
 ## 🛠️ Tecnologías utilizadas
 
-### Frontend:
+## Frontend:
 - **React** + **TypeScript**
 - **TailwindCSS** para estilos rápidos y modernos
 - **Axios** para peticiones HTTP
 - **React Router DOM** para navegación entre vistas
 - **Vite** para desarrollo ágil
 
-### Backend:
+## Backend:
 - **Node.js** + **Express**
 - **TypeScript** para tipado estricto
 - **JWT** (JSON Web Tokens) para autenticación segura
 - **Sequelize ORM** para interactuar con la base de datos
 
-### Base de datos:
+## Base de datos:
 - **MySQL** como sistema relacional robusto
 - **Sequelize** para migraciones, asociaciones y consultas tipadas
 
-### Control de versiones:
+## Control de versiones:
 - **Git** + **GitHub**  
   Proyecto gestionado con ramas limpias y commits significativos.
 
@@ -67,7 +67,7 @@ task-manager-project/
 ```
 ---
 
-### 🔐 Seguridad y autenticación
+## 🔐 Seguridad y autenticación
 
 - Todas las rutas protegidas utilizan un **middleware de autenticación con JWT**.
 - Los tokens se almacenan y validan correctamente en el cliente.
@@ -75,7 +75,7 @@ task-manager-project/
 
 ---
 
-### 🧠 Metodologías aplicadas
+## 🧠 Metodologías aplicadas
 
 - **Desarrollo basado en componentes reutilizables (React)**
 - **Separación de responsabilidades (MVC):** Controllers, Models, Routes
@@ -88,7 +88,7 @@ task-manager-project/
 
 ## 🧪 Cómo probar el proyecto localmente
 
-### 1. Clonar el repositorio
+##1. Clonar el repositorio
 ```bash
 git clone https://github.com/tu_usuario/task-manager-app.git
 cd task-manager-server
@@ -98,7 +98,7 @@ cd ../task-ui
 npm install
 ```
 
-### 2. Instalar dependencias
+## 2. Instalar dependencias
 ```bash
 cd task-manager-server
 npm install
@@ -107,14 +107,14 @@ cd ../task-ui
 npm install
 ```
 ---
-### 3. Ejecutar Backend y Frontend
-# Terminal 1 - Backend
+##3. Ejecutar Backend y Frontend
+ *Terminal 1 - Backend*
 ```bash
 cd task-manager-server
 npm run dev
 ```
 
-# Terminal 2 - Frontend
+ *Terminal 2 - Frontend*
 ```bash
 cd task-ui
 npm start
