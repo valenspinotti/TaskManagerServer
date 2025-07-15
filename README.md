@@ -49,21 +49,22 @@ Una aplicación web moderna para organizar tareas personales, construida con tec
 
 ## 📦 Estructura del proyecto
 
+```bash
 task-manager-project/
-├── task-manager-server/ # Backend con Node + Express + Sequelize
-│ ├── src/
-│ │ ├── config/
-│ │ ├── controllers/
-│ │ ├── middlewares/
-│ │ ├── models/
-│ │ ├── routes/
-│ │ └── index.ts
-├── task-ui/ # Frontend con React + TS + Tailwind
-│ ├── src/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ └── main.tsx
-
+├── task-manager-server/     # Backend con Node + Express + Sequelize
+│   └── src/
+│       ├── config/
+│       ├── controllers/
+│       ├── middlewares/
+│       ├── models/
+│       ├── routes/
+│       └── index.ts
+├── task-ui/                 # Frontend con React + TS + Tailwind
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       └── main.tsx
+```
 ---
 
 ### 🔐 Seguridad y autenticación
