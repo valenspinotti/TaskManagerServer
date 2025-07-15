@@ -6,7 +6,11 @@ Organizá tu productividad como un profesional con **Task Manager App**, una apl
 
 ## 🚀 ¿Qué es Task Manager App?
 
-**Task Manager App** es una herramienta de gestión de tareas construida con tecnologías modernas que permite:
+Una aplicación web moderna para organizar tareas personales, construida con tecnologías fullstack. Permite a los usuarios crear, editar, listar y gestionar tareas con autenticación segura y experiencia fluida.
+
+---
+
+## 🚀 ¿Qué hace esta app?
 
 - ✅ Registrar usuarios de forma segura con JWT
 - ✅ Iniciar sesión y mantener sesión persistente
@@ -43,21 +47,22 @@ Organizá tu productividad como un profesional con **Task Manager App**, una apl
 
 ---
 
-### 📦 Estructura del proyecto
+## 📦 Estructura del proyecto
 
-📁 task-manager-server/
-├── src/
-│ ├── config/ # Configuración de Sequelize y DB
-│ ├── controllers/ # Lógica de negocio
-│ ├── models/ # Modelos Sequelize: User y Task
-│ ├── middlewares/ # JWT y protección de rutas
-│ ├── routes/ # Endpoints organizados por funcionalidad
-│ └── index.ts # Entrada principal del servidor
-📁 task-ui/
-├── src/
-│ ├── components/ # Formularios reutilizables, listas de tareas
-│ ├── pages/ # Vistas: login, registro, dashboard, editar tarea
-│ └── main.tsx # Entrada del frontend
+task-manager-project/
+├── task-manager-server/ # Backend con Node + Express + Sequelize
+│ ├── src/
+│ │ ├── config/
+│ │ ├── controllers/
+│ │ ├── middlewares/
+│ │ ├── models/
+│ │ ├── routes/
+│ │ └── index.ts
+├── task-ui/ # Frontend con React + TS + Tailwind
+│ ├── src/
+│ │ ├── components/
+│ │ ├── pages/
+│ │ └── main.tsx
 
 ---
 
