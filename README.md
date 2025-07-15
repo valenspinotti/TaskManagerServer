@@ -113,7 +113,6 @@ npm install
 cd task-manager-server
 npm run dev
 ```
--
 
  *Terminal 2 - Frontend*
 ```bash
