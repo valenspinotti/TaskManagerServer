@@ -93,22 +93,29 @@ task-manager-project/
 git clone https://github.com/tu_usuario/task-manager-app.git
 cd task-manager-server
 npm install
-
+---
 cd ../task-ui
 npm install
+```
 
 ### 2. Instalar dependencias
+```bash
 cd task-manager-server
 npm install
 
 cd ../task-ui
 npm install
-
+```
+---
 ### 3. Ejecutar Backend y Frontend
 # Terminal 1 - Backend
+```bash
 cd task-manager-server
 npm run dev
+```
 
 # Terminal 2 - Frontend
+```bash
 cd task-ui
 npm start
+```
