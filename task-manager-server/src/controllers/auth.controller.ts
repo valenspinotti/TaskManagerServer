@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import { v4 as uuidv4 } from "uuid";
-import { User } from "../models/user.model";
-import { users } from "../data/user"; // Simulación de base de datos
+import User from "../config/models/user.model";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -15,27 +13,45 @@ export const register = async (req: Request, res: Response) => {
     return;
   }
 
-  const existingUser = users.find((user) => user.email === email);
+  const existingUser = await User.findOne({ where: { email } });
   if (existingUser) {
     res.status(400).json({ message: "User already taken" });
     return;
   }
   const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser: User = {
-    id: uuidv4(),
-    name,
-    lastName,
-    email,
-    password: hashedPassword,
-  };
-  users.push(newUser);
-  res.status(201).json({ message: "Succesfull registration" });
+
+  try {
+    const newUser = await User.create({
+      name,
+      lastName,
+      email,
+      password: hashedPassword,
+    });
+
+    const token = jwt.sign({ userId: newUser.id }, SECRET_KEY, {
+      expiresIn: "1h",
+    });
+    res.status(201).json({
+      message: "Succesfull registration",
+      token,
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        lastName: newUser.lastName,
+        email: newUser.email,
+        password: newUser.password,
+      },
+    });
+  } catch (error) {
+    console.error("Error registering user:", error);
+    res.status(500).json({ message: "Error registering user" });
+  }
 };
 
 export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
-  const user = users.find((user) => user.email === email);
+  const user = await User.findOne({ where: { email } });
   if (!user) {
     res.status(401).json({ message: "Invalid credentials" });
     return;
@@ -46,6 +62,7 @@ export const login = async (req: Request, res: Response) => {
     return;
   }
   const token = jwt.sign({ userId: user.id }, SECRET_KEY, { expiresIn: "1h" });
+
   res.json({
     token,
     user: {

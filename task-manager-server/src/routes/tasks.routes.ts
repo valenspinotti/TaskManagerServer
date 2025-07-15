@@ -10,10 +10,16 @@ import { authenticateToken } from "../middlewares/auth.middleware";
 
 const taskRoutes = Router();
 
-taskRoutes.get("/", authenticateToken, getTasks);
-taskRoutes.post("/", authenticateToken, createTask);
-taskRoutes.put(`/:id`, authenticateToken, updateTask);
-taskRoutes.delete("/:id", authenticateToken, deleteTask);
-taskRoutes.get("/:id", authenticateToken, getTaskById);
+function asyncHandler(fn: any) {
+  return function (req: any, res: any, next: any) {
+    Promise.resolve(fn(req, res, next)).catch(next);
+  };
+}
+
+taskRoutes.get("/", authenticateToken, asyncHandler(getTasks));
+taskRoutes.post("/", authenticateToken, asyncHandler(createTask));
+taskRoutes.put(`/:id`, authenticateToken, asyncHandler(updateTask));
+taskRoutes.delete("/:id", authenticateToken, asyncHandler(deleteTask));
+taskRoutes.get("/:id", authenticateToken, asyncHandler(getTaskById));
 
 export { taskRoutes };
